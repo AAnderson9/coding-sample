@@ -40,6 +40,8 @@ func get(w http.ResponseWriter, r *http.Request) {
 
 	trackList := JsonResponse{Type: "success", Data: searchForTracks(key)}
 
+	w.Header().Set("Access-Control-Allow-Origin", "*")
+	w.Header().Set("Access-Control-Allow-Headers", "Content-Type")
 	w.Header().Set("Content-Type", "application/json")
 	//was considering using a different HTTP response code such as 204 or 404 for when there are no results from the query but doing research seemed
 	//to suggest that I should still use a 200 response code when looking for a collection of results and get no result back
